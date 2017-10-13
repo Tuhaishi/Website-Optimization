@@ -1,5 +1,5 @@
-function getAdj(e) {
-    switch (e) {
+function getAdj(x) {
+    switch (x) {
         case "dark":
             var a = ["dark", "morbid", "scary", "spooky", "gothic", "deviant", "creepy", "sadistic", "black", "dangerous", "dejected", "haunted", "morose", "tragic", "shattered", "broken", "sad", "melancholy", "somber", "dark", "gloomy", "homicidal", "murderous", "shady", "misty", "dusky", "ghostly", "shadowy", "demented", "cursed", "insane", "possessed", "grotesque", "obsessed"];
             return a;
@@ -29,12 +29,12 @@ function getAdj(e) {
             return c;
         default:
             var d = ["scientific", "technical", "digital", "programming", "calculating", "formulating", "cyberpunk", "mechanical", "technological", "innovative", "brainy", "chemical", "quantum", "astro", "space", "theoretical", "atomic", "electronic", "gaseous", "investigative", "solar", "extinct", "galactic"];
-            return d
+            return d;
     }
 }
 
-function getNoun(e) {
-    switch (e) {
+function getNoun(x) {
+    switch (x) {
         case "animals":
             var a = ["flamingo", "hedgehog", "owl", "elephant", "pussycat", "alligator", "dachsund", "poodle", "beagle", "crocodile", "kangaroo", "wallaby", "woodpecker", "eagle", "falcon", "canary", "parrot", "parakeet", "hamster", "gerbil", "squirrel", "rat", "dove", "toucan", "raccoon", "vulture", "peacock", "goldfish", "rook", "koala", "skunk", "goat", "rooster", "fox", "porcupine", "llama", "grasshopper", "gorilla", "monkey", "seahorse", "wombat", "wolf", "giraffe", "badger", "lion", "mouse", "beetle", "cricket", "nightingale", "hawk", "trout", "squid", "octopus", "sloth", "snail", "locust", "baboon", "lemur", "meerkat", "oyster", "frog", "toad", "jellyfish", "butterfly", "caterpillar", "tiger", "hyena", "zebra", "snail", "pig", "weasel", "donkey", "penguin", "crane", "buzzard", "vulture", "rhino", "hippopotamus", "dolphin", "sparrow", "beaver", "moose", "minnow", "otter", "bat", "mongoose", "swan", "firefly", "platypus"];
             return a;
@@ -67,7 +67,7 @@ function getNoun(e) {
             return d;
         default:
             var u = ["robot", "alien", "raygun", "spaceship", "UFO", "rocket", "phaser", "astronaut", "spaceman", "planet", "star", "galaxy", "computer", "future", "timeMachine", "wormHole", "timeTraveler", "scientist", "invention", "martian", "pluto", "jupiter", "saturn", "mars", "quasar", "blackHole", "warpDrive", "laser", "orbit", "gears", "molecule", "electron", "neutrino", "proton", "experiment", "photon", "apparatus", "universe", "gravity", "darkMatter", "constellation", "circuit", "asteroid"];
-            return u
+            return u;
     }
 }
 
@@ -77,29 +77,29 @@ function generator(e, a) {
         i = parseInt(Math.random() * r.length),
         t = parseInt(Math.random() * n.length),
         o = "The " + r[i].capitalize() + " " + n[t].capitalize();
-    return o
+    return o;
 }
 
 function randomName() {
     var e = parseInt(Math.random() * adjectives.length),
         a = parseInt(Math.random() * nouns.length);
-    return generator(adjectives[e], nouns[a])
+    return generator(adjectives[e], nouns[a]);
 }
 
 function logAverageFrame(e) {
     for (var a = e.length, r = 0, n = a - 1; n > a - 11; n--) r += e[n].duration;
-    console.log("Average scripting time to generate last 10 frames: " + r / 10 + "ms")
+    console.log("Average scripting time to generate last 10 frames: " + r / 10 + "ms");
 }
 
 function updatePositions() {
     frame++, window.performance.mark("mark_start_frame");
     for (var e = document.body.scrollTop / 1250, a = 0, r = items.length; r > a; a++) {
         var n = Math.sin(e + a % 5);
-        items[a].style.left = items[a].basicLeft + 100 * n + "px"
+        items[a].style.left = items[a].basicLeft + 100 * n + "px";
     }
     if (window.performance.mark("mark_end_frame"), window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame"), frame % 10 === 0) {
         var i = window.performance.getEntriesByName("measure_frame_duration");
-        logAverageFrame(i)
+        logAverageFrame(i);
     }
 }
 var pizzas = [],
@@ -109,48 +109,48 @@ var pizzas = [],
         3: "Large"
     },
     sizePercentByPizzaSize = {
-        1: .25,
-        2: .3333,
-        3: .5
+        1: 0.25,
+        2: 0.3333,
+        3: 0.5
     },
     pizzaIngredients = {};
 pizzaIngredients.meats = ["Pepperoni", "Sausage", "Fennel Sausage", "Spicy Sausage", "Chicken", "BBQ Chicken", "Chorizo", "Chicken Andouille", "Salami", "Tofu", "Bacon", "Canadian Bacon", "Proscuitto", "Italian Sausage", "Ground Beef", "Anchovies", "Turkey", "Ham", "Venison", "Lamb", "Duck", "Soylent Green", "Carne Asada", "Soppressata Picante", "Coppa", "Pancetta", "Bresola", "Lox", "Guanciale", "Chili", "Beef Jerky", "Pastrami", "Kielbasa", "Scallops", "Filet Mignon"], pizzaIngredients.nonMeats = ["White Onions", "Red Onions", "Sauteed Onions", "Green Peppers", "Red Peppers", "Banana Peppers", "Ghost Peppers", "Habanero Peppers", "Jalapeno Peppers", "Stuffed Peppers", "Spinach", "Tomatoes", "Pineapple", "Pear Slices", "Apple Slices", "Mushrooms", "Arugula", "Basil", "Fennel", "Rosemary", "Cilantro", "Avocado", "Guacamole", "Salsa", "Swiss Chard", "Kale", "Sun Dried Tomatoes", "Walnuts", "Artichoke", "Asparagus", "Caramelized Onions", "Mango", "Garlic", "Olives", "Cauliflower", "Polenta", "Fried Egg", "Zucchini", "Hummus"], pizzaIngredients.cheeses = ["American Cheese", "Swiss Cheese", "Goat Cheese", "Mozzarella Cheese", "Parmesean Cheese", "Velveeta Cheese", "Gouda Cheese", "Muenster Cheese", "Applewood Cheese", "Asiago Cheese", "Bleu Cheese", "Boursin Cheese", "Brie Cheese", "Cheddar Cheese", "Chevre Cheese", "Havarti Cheese", "Jack Cheese", "Pepper Jack Cheese", "Gruyere Cheese", "Limberger Cheese", "Manchego Cheese", "Marscapone Cheese", "Pecorino Cheese", "Provolone Cheese", "Queso Cheese", "Roquefort Cheese", "Romano Cheese", "Ricotta Cheese", "Smoked Gouda"], pizzaIngredients.sauces = ["Red Sauce", "Marinara", "BBQ Sauce", "No Sauce", "Hot Sauce"], pizzaIngredients.crusts = ["White Crust", "Whole Wheat Crust", "Flatbread Crust", "Stuffed Crust"], String.prototype.capitalize = function () {
-    return this.charAt(0).toUpperCase() + this.slice(1)
+    return this.charAt(0).toUpperCase() + this.slice(1);
 };
 var adjectives = ["dark", "color", "whimsical", "shiny", "noisy", "apocalyptic", "insulting", "praise", "scientific"],
     nouns = ["animals", "everyday", "fantasy", "gross", "horror", "jewelry", "places", "scifi"],
     selectRandomMeat = function () {
         var e = pizzaIngredients.meats[Math.floor(Math.random() * pizzaIngredients.meats.length)];
-        return e
+        return e;
     },
     selectRandomNonMeat = function () {
         var e = pizzaIngredients.nonMeats[Math.floor(Math.random() * pizzaIngredients.nonMeats.length)];
-        return e
+        return e;
     },
     selectRandomCheese = function () {
         var e = pizzaIngredients.cheeses[Math.floor(Math.random() * pizzaIngredients.cheeses.length)];
-        return e
+        return e;
     },
     selectRandomSauce = function () {
         var e = pizzaIngredients.sauces[Math.floor(Math.random() * pizzaIngredients.sauces.length)];
-        return e
+        return e;
     },
     selectRandomCrust = function () {
         var e = pizzaIngredients.crusts[Math.floor(Math.random() * pizzaIngredients.crusts.length)];
-        return e
+        return e;
     },
     ingredientItemizer = function (e) {
-        return "<li>" + e + "</li>"
+        return "<li>" + e + "</li>";
     },
     makeRandomPizza = function () {
         for (var e = "", a = Math.floor(4 * Math.random()), r = Math.floor(3 * Math.random()), n = Math.floor(2 * Math.random()), i = 0; a > i; i++) e += ingredientItemizer(selectRandomMeat());
         for (var t = 0; r > t; t++) e += ingredientItemizer(selectRandomNonMeat());
         for (var o = 0; n > o; o++) e += ingredientItemizer(selectRandomCheese());
-        return e += ingredientItemizer(selectRandomSauce()), e += ingredientItemizer(selectRandomCrust())
+        return e += ingredientItemizer(selectRandomSauce()), e += ingredientItemizer(selectRandomCrust());
     },
     pizzaElementGenerator = function (e) {
         var a, r, n, i, t, o;
-        return a = document.createElement("div"), r = document.createElement("div"), n = document.createElement("img"), i = document.createElement("div"), a.classList.add("randomPizzaContainer"), a.style.width = "33.33%", a.style.height = "325px", a.id = "pizza" + e, r.style.width = "35%", n.src = "img/pizza.png", n.classList.add("img-responsive"), r.appendChild(n), a.appendChild(r), i.style.width = "65%", t = document.createElement("h4"), t.innerHTML = randomName(), i.appendChild(t), o = document.createElement("ul"), o.innerHTML = makeRandomPizza(), i.appendChild(o), a.appendChild(i), a
+        return a = document.createElement("div"), r = document.createElement("div"), n = document.createElement("img"), i = document.createElement("div"), a.classList.add("randomPizzaContainer"), a.style.width = "33.33%", a.style.height = "325px", a.id = "pizza" + e, r.style.width = "35%", n.src = "img/pizza.png", n.classList.add("img-responsive"), r.appendChild(n), a.appendChild(r), i.style.width = "65%", t = document.createElement("h4"), t.innerHTML = randomName(), i.appendChild(t), o = document.createElement("ul"), o.innerHTML = makeRandomPizza(), i.appendChild(o), a.appendChild(i), a;
     },
     resizePizzas = function (e) {
         function a(e, a) {
@@ -159,18 +159,18 @@ var adjectives = ["dark", "color", "whimsical", "shiny", "noisy", "apocalyptic",
                 i = r / n,
                 t = sizePercentByPizzaSize[a],
                 o = (t - i) * n;
-            return o
+            return o;
         }
 
         function r(e) {
-            for (var a = 0, r = pizzas.length; r > a; a++) pizzas[a].style.width = i
+            for (var a = 0, r = pizzas.length; r > a; a++) pizzas[a].style.width = i;
         }
         window.performance.mark("mark_start_resize"), document.getElementById("pizzaSize").innerHTML = pizzaSizes[e];
         var n = a(pizzas[0], e),
             i = pizzas[0].offsetWidth + n + "px";
         r(e), window.performance.mark("mark_end_resize"), window.performance.measure("measure_pizza_resize", "mark_start_resize", "mark_end_resize");
         var t = window.performance.getEntriesByName("measure_pizza_resize");
-        console.log("Time to resize pizzas: " + t[t.length - 1].duration + "ms")
+        console.log("Time to resize pizzas: " + t[t.length - 1].duration + "ms");
     };
 window.performance.mark("mark_start_generating");
 for (var pizzasDiv = document.getElementById("randomPizzas"), i = 2; 100 > i; i++) pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -187,5 +187,5 @@ window.addEventListener("scroll", updatePositions), document.addEventListener("D
         t = document.getElementById("movingPizzas1");
     a = Math.ceil(window.innerWidth / (256 - 73.33)), r = Math.ceil(window.innerHeight / 256), i = a * r;
     for (var o = 0; i > o; o++) e = document.createElement("img"), e.className = "mover", e.src = "img/pizza.png", e.style.height = "100px", e.style.width = "73.333px", e.basicLeft = o % a * n, e.style.top = Math.floor(o / a) * n + "px", t.appendChild(e);
-    updatePositions()
+    updatePositions();
 });
